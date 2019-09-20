@@ -1,13 +1,20 @@
 const db = require('../data/dbConfig')
 
 module.exports = {
+    addPizza,
     addTopping,
     removeTopping,
+    removePizza,
     getPizza
 }
 
+function addPizza (pizza) {
+    return db('pizzas')
+        .insert(pizza, 'id')
+}
 function addTopping (topping) {
-    return null
+    return db('pizzas')
+        .insert(topping, 'id')
 }
 
 function removeTopping () {
@@ -15,5 +22,10 @@ function removeTopping () {
 }
 
 function getPizza () {
-    return null
+    return db('pizzas')
+}
+function removePizza (id) {
+    return db('pizzas')
+        .where('id', id)
+        .del()
 }
